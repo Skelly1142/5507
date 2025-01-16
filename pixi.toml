@@ -1,0 +1,19 @@
+[project]
+authors = ["Mitchell Callaghan <mcallaghan345@gmail.com>"]
+channels = ["conda-forge"]
+description = "Add a short description here"
+name = "5507"
+platforms = ["win-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+pandas = ">=2.2.3,<3"
+numpy = ">=2.0.2,<3"
+scipy = ">=1.13.1,<2"
+matplotlib = ">=3.9.4,<4"
+seaborn = ">=0.13.2,<0.14"
+scikit-learn = ">=1.6.1,<2"
+statsmodels = ">=0.14.4,<0.15"
+pip = ">=24.3.1,<25"
