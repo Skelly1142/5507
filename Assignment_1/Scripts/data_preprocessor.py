@@ -73,7 +73,7 @@ def remove_redundant_features(data, threshold=0.9):
     :param threshold: float, correlation threshold
     :return: pandas DataFrame
     """
-     # Select only numeric columns for correlation computation
+   # Select only numeric columns for correlation computation
     numeric_data = data.select_dtypes(include=[np.number])
 
     # Compute the correlation matrix for numeric columns
@@ -86,7 +86,10 @@ def remove_redundant_features(data, threshold=0.9):
     to_drop = [column for column in upper_triangle.columns if any(upper_triangle[column] > threshold)]
 
     # Drop redundant features
-    return data.drop(columns=to_drop)
+    cleaned_data = data.drop(columns=to_drop)
+    
+    # Return only the cleaned data
+    return cleaned_data
 
 
 
@@ -119,8 +122,7 @@ if __name__ == "__main__":
     print("\nData After Removing Redundant Features:")
     print(reduced_data.head())
     
-    print("Summary Statistics for Messy Dataset:")
-    print(messy_data.describe(include="all"))  # Include all columns (numeric and categorical)
+   
 # ---------------------------------------------------
 
 def simple_model(input_data, split_data=True, scale_data=False, print_report=False):
