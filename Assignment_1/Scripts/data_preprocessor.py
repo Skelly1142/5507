@@ -88,6 +88,36 @@ def remove_redundant_features(data, threshold=0.9):
     # Drop redundant features
     return data.drop(columns=to_drop)
 
+
+
+
+# Testing Section
+if __name__ == "__main__":
+    # Load your dataset
+    messy_data = pd.read_csv('messy_data.csv')  # Replace with the actual path to your dataset
+
+    # Step 1: Impute Missing Values
+    print("Original Data with Missing Values:")
+    print(messy_data.head())
+
+    imputed_data = impute_missing_values(messy_data, strategy='mean')
+    print("\nData After Imputation:")
+    print(imputed_data.head())
+
+    # Step 2: Remove Duplicates
+    no_duplicates_data = remove_duplicates(imputed_data)
+    print("\nData After Removing Duplicates:")
+    print(no_duplicates_data.head())
+
+    # Step 3: Normalize Numerical Data
+    normalized_data = normalize_data(no_duplicates_data, method='minmax')
+    print("\nData After Normalization:")
+    print(normalized_data.describe())
+
+    # Step 4: Remove Redundant Features
+    reduced_data = remove_redundant_features(normalized_data, threshold=0.9)
+    print("\nData After Removing Redundant Features:")
+    print(reduced_data.head())
 # ---------------------------------------------------
 
 def simple_model(input_data, split_data=True, scale_data=False, print_report=False):
