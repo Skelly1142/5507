@@ -94,7 +94,7 @@ def remove_redundant_features(data, threshold=0.9):
 # Testing Section
 if __name__ == "__main__":
     # Load your dataset
-    messy_data = pd.read_csv('messy_data.csv')  # Replace with the actual path to your dataset
+    messy_data = pd.read_csv('messy_data.csv') 
 
     # Step 1: Impute Missing Values
     print("Original Data with Missing Values:")
@@ -118,6 +118,9 @@ if __name__ == "__main__":
     reduced_data = remove_redundant_features(normalized_data, threshold=0.9)
     print("\nData After Removing Redundant Features:")
     print(reduced_data.head())
+    
+    print("Summary Statistics for Messy Dataset:")
+    print(messy_data.describe(include="all"))  # Include all columns (numeric and categorical)
 # ---------------------------------------------------
 
 def simple_model(input_data, split_data=True, scale_data=False, print_report=False):
