@@ -17,6 +17,7 @@ def impute_missing_values(data, strategy='mean'):
     # Select only numeric columns
     numeric_data = data.select_dtypes(include=[np.number])
 
+    # check which imputation strategy to apply to the dataframe
     if strategy == 'mean':
         # Impute missing values with the mean of each numeric column
         data[numeric_data.columns] = numeric_data.fillna(numeric_data.mean())
@@ -28,8 +29,10 @@ def impute_missing_values(data, strategy='mean'):
         mode_values = numeric_data.mode().iloc[0]
         data[numeric_data.columns] = numeric_data.fillna(mode_values)
     else:
+        #if an invalid imputation method is selected raise an error message to the user 
         raise ValueError("Invalid strategy. Choose 'mean', 'median', or 'mode'.")
-
+    
+    #return the data with the imputed missing values 
     return data
 
     
@@ -41,6 +44,7 @@ def remove_duplicates(data):
     :param data: pandas DataFrame
     :return: pandas DataFrame
     """
+    #drop duplicate rows from the dataframe 
     return data.drop_duplicates()
 
 
@@ -50,18 +54,20 @@ def normalize_data(data,method='minmax'):
     :param data: pandas DataFrame
     :param method: str, normalization method ('minmax' (default) or 'standard')
     """
-        # Select numeric columns for normalization
+     # Select numeric columns for normalization
     numeric_data = data.select_dtypes(include=[np.number])
-
+    
+    #check which normalization method to apply to the dataframe
     if method == 'minmax':
-        # Min-Max scaling (scales features to a range of 0-1)
+        # Min-Max scaling for scaling features to a range of 0-1
         scaler = MinMaxScaler()
         data[numeric_data.columns] = scaler.fit_transform(numeric_data)
     elif method == 'standard':
-        # Standard scaling (scales features to have zero mean and unit variance)
+        # Standard scaling which scales features to have zero mean and unit variance
         scaler = StandardScaler()
         data[numeric_data.columns] = scaler.fit_transform(numeric_data)
     else:
+        #raise an error if the user inputs a 
         raise ValueError("Invalid method. Choose 'minmax' or 'standard'.")
 
     return data
