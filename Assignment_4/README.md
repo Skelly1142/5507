@@ -13,7 +13,6 @@ This Python script performs survival analysis on clinical data using **Kaplan-Me
 5. [Feature Importance Analysis](#feature-importance-analysis)
 6. [Installation Instructions](#installation-instructions)
 7. [Usage Instructions](#usage-instructions)
-8. [Example Output](#example-output)
 
 ---
 
